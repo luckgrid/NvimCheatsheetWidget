@@ -2,6 +2,17 @@
 
 A native macOS desktop widget that displays common Neovim shortcuts. Click the widget to expand into a full searchable cheatsheet.
 
+## Screenshots
+
+<p>
+  <img src="assets/widget-topbar.png" alt="Menu Bar Icon" width="200">
+  <img src="assets/widget-preview.png" alt="Widget Preview" width="220">
+</p>
+
+<img src="assets/widget-full.png" alt="Full Cheatsheet" width="600">
+
+<img src="assets/widget-search.png" alt="Search Feature" width="600">
+
 ## Features
 
 - **Compact Widget** - Floats on desktop showing 7 most common shortcuts
