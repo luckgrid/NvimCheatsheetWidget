@@ -49,7 +49,7 @@ struct WidgetView: View {
                         Text(keymap.keys)
                             .font(.system(size: 10, weight: .medium, design: .monospaced))
                             .foregroundColor(.purple)
-                            .frame(width: 70, alignment: .leading)
+                            .frame(width: 82, alignment: .leading)
                         
                         Text(keymap.description)
                             .font(.system(size: 10))

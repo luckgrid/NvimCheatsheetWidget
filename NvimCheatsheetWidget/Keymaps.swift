@@ -20,7 +20,7 @@ let compactKeymaps: [Keymap] = [
     Keymap(keys: "dd/yy/p", description: "Cut line / Copy line / Paste"),
     Keymap(keys: "u/<C-r>", description: "Undo / Redo"),
     Keymap(keys: "<Space>ff", description: "Find files"),
-    Keymap(keys: "<Space>e", description: "Toggle file tree"),
+    Keymap(keys: "<Space>ide", description: "Toggle IDE mode"),
     Keymap(keys: "<Space>?", description: "Open this widget"),
 ]
 
@@ -90,6 +90,17 @@ let keymapSections: [KeymapSection] = [
         Keymap(keys: "H", description: "Toggle hidden files"),
         Keymap(keys: "?", description: "Show help"),
     ]),
+
+    // MARK: - IDE Mode
+    KeymapSection(title: "IDE Mode (Custom Layout)", icon: "square.split.2x2", keymaps: [
+        Keymap(keys: "<Space>ide", description: "Toggle IDE mode on/off"),
+        Keymap(keys: "<Space>ic", description: "Toggle AI chat panel (right)"),
+        Keymap(keys: "<Space>ir", description: "Toggle right terminal panel"),
+        Keymap(keys: "<Space>ib", description: "Toggle bottom terminal panel"),
+        Keymap(keys: "<Space>ix", description: "Toggle diagnostics panel (bottom)"),
+        Keymap(keys: "<Space>iq", description: "Toggle quickfix panel (bottom)"),
+        Keymap(keys: "<Space>ih", description: "Open this cheatsheet widget"),
+    ]),
     
     // MARK: - Search (fzf-lua)
     KeymapSection(title: "Search (fzf-lua)", icon: "magnifyingglass", keymaps: [
@@ -100,6 +111,18 @@ let keymapSections: [KeymapSection] = [
         Keymap(keys: "<Space>fx", description: "Document diagnostics"),
         Keymap(keys: "<Space>fX", description: "Workspace diagnostics"),
         Keymap(keys: "<Space>c", description: "Clear search highlights"),
+    ]),
+
+    // MARK: - AI Assistant
+    KeymapSection(title: "AI Assistant (CodeCompanion)", icon: "sparkles", keymaps: [
+        Keymap(keys: "<Space>ic", description: "Toggle CodeCompanion chat panel"),
+        Keymap(keys: ":CodeCompanionChat", description: "Open chat buffer"),
+        Keymap(keys: ":CodeCompanion", description: "Inline AI prompt"),
+        Keymap(keys: ":CodeCompanionActions", description: "Open action palette"),
+        Keymap(keys: "#{buffer}", description: "Share current buffer context"),
+        Keymap(keys: "@{files}", description: "Enable file tools in chat"),
+        Keymap(keys: "<CR>/<C-s> (chat)", description: "Send message in chat"),
+        Keymap(keys: "ga (chat)", description: "Change adapter/model"),
     ]),
     
     // MARK: - LSP
@@ -126,6 +149,14 @@ let keymapSections: [KeymapSection] = [
         Keymap(keys: "<Space>pd", description: "Prev diagnostic"),
         Keymap(keys: "<Space>q", description: "Diagnostic list"),
         Keymap(keys: "<Space>td", description: "Toggle diagnostics"),
+    ]),
+
+    // MARK: - Panels (trouble.nvim)
+    KeymapSection(title: "Panels (trouble.nvim)", icon: "list.bullet.rectangle", keymaps: [
+        Keymap(keys: "<Space>ix", description: "Toggle diagnostics panel"),
+        Keymap(keys: "<Space>iq", description: "Toggle quickfix panel"),
+        Keymap(keys: ":Trouble diagnostics toggle", description: "Open diagnostics in split"),
+        Keymap(keys: ":Trouble qflist toggle", description: "Open quickfix in split"),
     ]),
     
     // MARK: - Git (gitsigns)
@@ -154,13 +185,23 @@ let keymapSections: [KeymapSection] = [
         Keymap(keys: "<Space>bn", description: "Next buffer"),
         Keymap(keys: "<Space>bp", description: "Previous buffer"),
         Keymap(keys: "<Space>fb", description: "List buffers"),
-        Keymap(keys: "L/H", description: "Next/Prev buffer (LazyVim)"),
+        Keymap(keys: "Bufferline", description: "Tab bar enabled for open buffers"),
     ]),
     
     // MARK: - Terminal
     KeymapSection(title: "Terminal", icon: "terminal", keymaps: [
         Keymap(keys: "<Space>t", description: "Toggle floating terminal"),
+        Keymap(keys: "<Space>ib", description: "Toggle bottom terminal panel"),
+        Keymap(keys: "<Space>ir", description: "Toggle right terminal panel"),
         Keymap(keys: "<Esc> (in terminal)", description: "Close terminal"),
+    ]),
+
+    // MARK: - Plugin Management
+    KeymapSection(title: "Plugin Management (vim.pack)", icon: "shippingbox", keymaps: [
+        Keymap(keys: "<Space>pu", description: "Update plugins"),
+        Keymap(keys: "<Space>pl", description: "Sync plugins to lockfile"),
+        Keymap(keys: ":PackUpdateAll", description: "Run vim.pack.update()"),
+        Keymap(keys: ":PackSyncLockfile", description: "Run lockfile target sync"),
     ]),
     
     // MARK: - Editing

@@ -6,17 +6,26 @@ struct CheatsheetView: View {
     @State private var selectedSection: KeymapSection?
     
     var filteredSections: [KeymapSection] {
-        if searchText.isEmpty {
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        if query.isEmpty {
             return keymapSections
         }
+
         return keymapSections.compactMap { section in
-            let filteredKeymaps = section.keymaps.filter { keymap in
-                keymap.keys.localizedCaseInsensitiveContains(searchText) ||
-                keymap.description.localizedCaseInsensitiveContains(searchText)
+            if section.title.localizedCaseInsensitiveContains(query) {
+                return section
             }
+
+            let filteredKeymaps = section.keymaps.filter { keymap in
+                keymap.keys.localizedCaseInsensitiveContains(query) ||
+                keymap.description.localizedCaseInsensitiveContains(query)
+            }
+
             if filteredKeymaps.isEmpty {
                 return nil
             }
+
             return KeymapSection(title: section.title, icon: section.icon, keymaps: filteredKeymaps)
         }
     }
@@ -28,7 +37,7 @@ struct CheatsheetView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Neovim Cheatsheet")
                         .font(.system(size: 20, weight: .bold))
-                    Text("Custom config with fzf-lua, nvim-tree, gitsigns, mini.nvim")
+                    Text("Custom config with fzf-lua, nvim-tree, codecompanion, trouble, toggleterm")
                         .font(.system(size: 11))
                         .foregroundColor(.secondary)
                 }
